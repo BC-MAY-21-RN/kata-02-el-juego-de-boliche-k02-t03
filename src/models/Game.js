@@ -24,7 +24,7 @@ class Game {
       if (this.frames[i - 1].strike) {
         this.frames[i - 1].addScore(firstScore + secondScore);
       }
-      this.frames.push(new Frame(2));
+      this.frames.push(new Frame(i));
       this.frames[i].roll(firstScore);
       this.frames[i].roll(secondScore);
       this.frames[i].calculateScore();
@@ -33,7 +33,6 @@ class Game {
     for (let i = 0; i < 10; i++) {
       console.log(`Frame ${i + 1}:`, this.frames[i].score);
     }
-    return;
   }
 
 }

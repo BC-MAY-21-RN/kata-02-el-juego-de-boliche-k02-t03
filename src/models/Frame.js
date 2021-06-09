@@ -5,7 +5,7 @@ class Frame {
     this.frame = numberOfFrame;
     this.strike = false;
     this.spare = false;
-    this.extraRoll = false;
+    this.extraRoll = numberOfFrame === 10;
     this.extraScore = 0;
     this.firstScore = 0;
     this.secondScore = 0;
@@ -18,7 +18,7 @@ class Frame {
       this.firstScore = pins;
     } else {
       this.secondScore = pins;
-      if (this.spare || this.strike) {
+      if ((this.spare || this.strike) && this.extraRoll) {
         this.extraScore = pins;
       }
     }
@@ -32,16 +32,6 @@ class Frame {
     if (this.score === 10 && this.secondScore !== 0) {
       this.spare = true;
     }
-    console.log({
-      frame: this.frame,
-      tries: this.tries,
-      first: this.firstScore,
-      second: this.secondScore,
-      extra: this.extraRoll,
-      score: this.score,
-      spare: this.spare,
-      strike: this.strike
-    })
   }
 
   addScore(score) {
